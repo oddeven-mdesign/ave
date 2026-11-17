@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>나는 자료 분석가</title>
+<title>나도 자료 분석가</title>
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1843,7 +1843,7 @@ body.cls-no-calc .calc-toggle,body.cls-no-calc .calc-toggle-own{opacity:.4}
   <div class="brand">
     <div class="brand-logo" id="brandLogo" aria-hidden="true"></div>
     <div>
-      <h1>나는 자료 분석가</h1>
+      <h1>나도 자료 분석가</h1>
       <small>Ⅷ. 자료의 정리와 해석 · 중학교 1학년</small>
     </div>
   </div>
@@ -3051,16 +3051,16 @@ function runSelfCheck(opts = {}){
   }
   const bad = SELF_CHECK.filter(c => !c.ok).concat(QUIZ_AUDIT.filter(c => !c.ok));
   try {
-    console.groupCollapsed(`🧮 [나는 자료 분석가] 수학 내용 자체 검사: ${SELF_CHECK.filter(c => c.ok).length}/${SELF_CHECK.length} 통과 (펼치면 항목별 표)`);
+    console.groupCollapsed(`🧮 [나도 자료 분석가] 수학 내용 자체 검사: ${SELF_CHECK.filter(c => c.ok).length}/${SELF_CHECK.length} 통과 (펼치면 항목별 표)`);
     console.table(SELF_CHECK.map(c => ({ 학습: c.where, 항목: c.label, 화면: String(c.shown), 다시계산: String(c.calc), 결과: c.ok ? '✓' : '✗ 틀림' })));
     console.groupEnd();
-    console.groupCollapsed(`📝 [나는 자료 분석가] 퀴즈 정답 자체 검사(모든 학습): ${QUIZ_AUDIT.filter(c => c.ok).length}/${QUIZ_AUDIT.length} 통과 (펼치면 문제별 표)`);
+    console.groupCollapsed(`📝 [나도 자료 분석가] 퀴즈 정답 자체 검사(모든 학습): ${QUIZ_AUDIT.filter(c => c.ok).length}/${QUIZ_AUDIT.length} 통과 (펼치면 문제별 표)`);
     console.table(QUIZ_AUDIT.map(c => ({ 학습: c.where, 문제: c.label, 계산: c.how, 정답: String(c.shown), 다시계산: String(c.calc), 결과: c.ok ? '✓' : '✗ 틀림' })));
     console.groupEnd();
     if (bad.length) console.warn('✗ 다시 계산한 값과 다른 항목:', bad.map(c => `${c.where} · ${c.label}: 화면 ${c.shown} / 계산 ${c.calc}`));
     const cBad = CHART_AUDIT.filter(a => a.issues.length && !a.intentional);
     const cChecked = CHART_AUDIT.filter(a => !a.intentional);
-    const cMsg = `📈 [나는 자료 분석가] 그래프 자체 검사: ${cChecked.length - cBad.length}/${cChecked.length} 통과 — 눈금 간격·세로축 0·히스토그램 틈·도수분포다각형 양 끝 확인 (오류 탐정의 일부러 틀린 그래프는 검사하지 않아요. 버튼을 눌러 새로 그리는 그래프도 그릴 때마다 검사해요)`;
+    const cMsg = `📈 [나도 자료 분석가] 그래프 자체 검사: ${cChecked.length - cBad.length}/${cChecked.length} 통과 — 눈금 간격·세로축 0·히스토그램 틈·도수분포다각형 양 끝 확인 (오류 탐정의 일부러 틀린 그래프는 검사하지 않아요. 버튼을 눌러 새로 그리는 그래프도 그릴 때마다 검사해요)`;
     if (cBad.length) console.warn(cMsg); else console.log(cMsg);
     if (cBad.length) console.warn(cBad);
   } catch(e){}
@@ -4441,11 +4441,11 @@ LESSON_BUILDERS[0] = (api) => {
 
   /* 표지 배너 기본 그림 (ASSETS.banner가 없을 때) */
   function welcomeSVG(){
-    const svg = s('svg', { viewBox:'0 0 800 220', class:'welcome-svg', role:'img', 'aria-label':'나는 자료 분석가 표지' });
+    const svg = s('svg', { viewBox:'0 0 800 220', class:'welcome-svg', role:'img', 'aria-label':'나도 자료 분석가 표지' });
     const defs = s('defs', {}, s('linearGradient', { id:'wgrad', x1:0, y1:0, x2:1, y2:1 }, s('stop', { offset:'0', 'stop-color':'#7D2AE8' }), s('stop', { offset:'1', 'stop-color':'#00C4CC' })));
     svg.append(defs, s('rect', { width:800, height:220, rx:24, fill:'url(#wgrad)' }));
     [[40,60,'.08'],[700,30,'.1'],[620,170,'.07']].forEach(([x, y, o]) => svg.append(s('circle', { cx:x, cy:y, r:70, fill:'#fff', opacity:o })));
-    svg.append(s('text', { x:48, y:96, fill:'#fff', 'font-size':40, 'font-weight':900 }, '나는 자료 분석가'));
+    svg.append(s('text', { x:48, y:96, fill:'#fff', 'font-size':40, 'font-weight':900 }, '나도 자료 분석가'));
     svg.append(s('text', { x:50, y:136, fill:'#fff', 'font-size':18, 'font-weight':500, opacity:.92 }, '자료를 모으고, 정리하고, 해석해 보자!'));
     const bx = 560, by = 180;
     [[0,50,'#FFD166'],[34,90,'#fff'],[68,70,'#FF8A3D'],[102,120,'#fff']].forEach(([dx, hh, c]) => svg.append(s('rect', { x:bx + dx, y:by - hh, width:26, height:hh, rx:6, fill:c, opacity:.95 })));
@@ -8067,7 +8067,7 @@ function clsLogin(){
   $$('.cls-login').forEach(x => x.remove());
   const saved = clsLoc.get(CLS_KEY.user, null);
   const m = clsModal(`
-    <div class="cls-brand"><span aria-hidden="true">📊</span><h2>나는 자료 분석가</h2></div>
+    <div class="cls-brand"><span aria-hidden="true">📊</span><h2>나도 자료 분석가</h2></div>
     <div class="cls-tabs" role="tablist"><button class="btn on" type="button" role="tab" data-t="student" aria-selected="true">🧑‍🎓 학생</button><button class="btn" type="button" role="tab" data-t="admin" aria-selected="false">👩‍🏫 관리자</button></div>
     <div class="cls-pane" data-p="student">
       <label class="cls-field"><span>학번</span><input type="text" inputmode="numeric" autocomplete="off" data-f="sid" placeholder="예) 10215"></label>

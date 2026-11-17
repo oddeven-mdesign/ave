@@ -1,5 +1,5 @@
 /**
- * 나는 자료 분석가 — 학습 기록 수집 · 수업 설정 공유 · 활동 점수 · 모니터링 (Google Apps Script)
+ * 나도 자료 분석가 — 학습 기록 수집 · 수업 설정 공유 · 활동 점수 · 모니터링 (Google Apps Script)
  * -----------------------------------------------------------------------------
  * 만드는 탭
  *   1) 활동 데이터   : 학생 화면이 보낼 때마다 한 줄씩 그대로 쌓임 (같은 학생이 여러 줄)
@@ -71,7 +71,7 @@ function doGet(e) {
   if (action === 'allProgress') return json_(allProgress_(e.parameter.auth));
   if (action === 'myScores') return json_(myScores_(e.parameter.sid, e.parameter.name));
   if (action === 'allScores') return json_(allScores_(e.parameter.auth));
-  return json_({ ok: true, message: '나는 자료 분석가 학습 기록 수집 중' });
+  return json_({ ok: true, message: '나도 자료 분석가 학습 기록 수집 중' });
 }
 
 /* ---------- 1) 활동 데이터 ---------- */
